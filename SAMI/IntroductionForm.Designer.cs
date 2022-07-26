@@ -34,6 +34,9 @@
             this.specifySALTLabel = new System.Windows.Forms.Label();
             this.haveSALTButton = new System.Windows.Forms.Button();
             this.notSALTButton = new System.Windows.Forms.Button();
+            this.browseTextBox = new System.Windows.Forms.TextBox();
+            this.browseButton = new System.Windows.Forms.Button();
+            this.SAFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,11 +62,11 @@
             // specifySALTLabel
             // 
             this.specifySALTLabel.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.specifySALTLabel.Location = new System.Drawing.Point(275, 284);
+            this.specifySALTLabel.Location = new System.Drawing.Point(275, 212);
             this.specifySALTLabel.Name = "specifySALTLabel";
-            this.specifySALTLabel.Size = new System.Drawing.Size(300, 72);
+            this.specifySALTLabel.Size = new System.Drawing.Size(300, 137);
             this.specifySALTLabel.TabIndex = 2;
-            this.specifySALTLabel.Text = "Please specify if you have SALT installed or not";
+            this.specifySALTLabel.Text = "Please specify the Smol Ame directory and whether you have SALT installed or not";
             // 
             // haveSALTButton
             // 
@@ -83,21 +86,45 @@
             this.notSALTButton.TabIndex = 4;
             this.notSALTButton.Text = "I do not have SALT";
             this.notSALTButton.UseVisualStyleBackColor = true;
+            this.notSALTButton.Click += new System.EventHandler(this.notSALTButton_Click);
+            // 
+            // browseTextBox
+            // 
+            this.browseTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.browseTextBox.Location = new System.Drawing.Point(275, 414);
+            this.browseTextBox.Name = "browseTextBox";
+            this.browseTextBox.ReadOnly = true;
+            this.browseTextBox.Size = new System.Drawing.Size(218, 27);
+            this.browseTextBox.TabIndex = 6;
+            this.browseTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.browseTextBox_MouseClick);
+            // 
+            // browseButton
+            // 
+            this.browseButton.Location = new System.Drawing.Point(499, 412);
+            this.browseButton.Name = "browseButton";
+            this.browseButton.Size = new System.Drawing.Size(94, 29);
+            this.browseButton.TabIndex = 7;
+            this.browseButton.Text = "Browse";
+            this.browseButton.UseVisualStyleBackColor = true;
+            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
             // IntroductionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 502);
+            this.Controls.Add(this.browseButton);
+            this.Controls.Add(this.browseTextBox);
             this.Controls.Add(this.notSALTButton);
             this.Controls.Add(this.haveSALTButton);
             this.Controls.Add(this.specifySALTLabel);
             this.Controls.Add(this.introductionLabel);
             this.Controls.Add(this.pictureBox1);
             this.Name = "IntroductionForm";
-            this.Text = "Form1";
+            this.Text = "Smol Ame Mod Installer";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -108,5 +135,8 @@
         private Label specifySALTLabel;
         private Button haveSALTButton;
         private Button notSALTButton;
+        private TextBox browseTextBox;
+        private Button browseButton;
+        private FolderBrowserDialog SAFolderBrowserDialog;
     }
 }
