@@ -8,7 +8,7 @@ namespace SAMI
     {
         public static string SAFolder = "";
         public Button cancelButton = new Button();
-        WebClient webClient;
+        WebClient webClient = new WebClient();
         String originalSpecifyText;
 
         public IntroductionForm()
@@ -18,26 +18,33 @@ namespace SAMI
 
         private void haveSALTButton_Click(object sender, EventArgs e)
         {
-            if (SAFolder != "")
+            if (Directory.Exists(SAFolder) && File.Exists(SAFolder + "\\Smol Ame.exe"))
             {
-                HaveSALTForm haveSALTForm = new HaveSALTForm();
-                haveSALTForm.StartPosition = FormStartPosition.Manual;
-                haveSALTForm.Location = this.Location;
-                haveSALTForm.Show();
-                this.Hide();
+                if (File.Exists(SAFolder + "\\Smol Ame_Data\\Managed\\SALT.dll"))
+                {
+                    HaveSALTForm haveSALTForm = new HaveSALTForm();
+                    haveSALTForm.StartPosition = FormStartPosition.Manual;
+                    haveSALTForm.Location = this.Location;
+                    haveSALTForm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("It seems like SALT is not installed in this folder! Please install SALT and try again");
+                }
+                
             }
             else
             {
-                MessageBox.Show("No folder selected!\nTry again");
+                MessageBox.Show("Selected folder does not contain Smol Ame! Try again");
             }
 
         }
 
         private void notSALTButton_Click(object sender, EventArgs e)
         {
-            if (SAFolder != "")
+            if (Directory.Exists(SAFolder) && File.Exists(SAFolder + "\\Smol Ame.exe"))
             {
-                webClient = new WebClient();
                 Uri SALTuri = new Uri("https://github.com/MegaPiggy/SALT/releases/download/1.3/SALTInstaller.exe");
                 webClient.DownloadFileAsync(SALTuri, SAFolder + "\\SALTInstaller.exe");
                 webClient.DownloadFileCompleted += DownloadSALTComplete;
@@ -63,7 +70,7 @@ namespace SAMI
             }
             else
             {
-                MessageBox.Show("No folder selected!\nTry again");
+                MessageBox.Show("Selected folder does not contain Smol Ame! Try again");
             }
         }
 
@@ -82,7 +89,14 @@ namespace SAMI
             }
             else
             {
-                Process.Start(SAFolder + "\\SALTInstaller.exe");
+                var ps = new ProcessStartInfo(SAFolder + "\\SALTInstaller.exe")
+                {
+                    UseShellExecute = true,
+                    Verb = "open",
+                    WorkingDirectory = SAFolder
+                };
+                Process.Start(ps);
+
                 HaveSALTForm haveSALTForm = new HaveSALTForm();
                 haveSALTForm.StartPosition = FormStartPosition.Manual;
                 haveSALTForm.Location = this.Location;
