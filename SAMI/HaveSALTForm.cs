@@ -142,5 +142,13 @@ namespace SAMI
             };
             Process.Start(smolAme);
         }
+
+        private void HaveSALTForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            foreach (Form open in System.Windows.Forms.Application.OpenForms)
+            {
+                open.Close();
+            }
+        }
     }
 }

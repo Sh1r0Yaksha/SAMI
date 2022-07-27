@@ -45,28 +45,55 @@ namespace SAMI
         {
             if (Directory.Exists(SAFolder) && File.Exists(SAFolder + "\\Smol Ame.exe"))
             {
-                Uri SALTuri = new Uri("https://github.com/MegaPiggy/SALT/releases/download/1.3/SALTInstaller.exe");
-                webClient.DownloadFileAsync(SALTuri, SAFolder + "\\SALTInstaller.exe");
-                webClient.DownloadFileCompleted += DownloadSALTComplete;
+                if (!File.Exists(SAFolder + "\\Smol Ame_Data\\Managed\\SALT.dll"))
+                {
+                    Uri SALTuri = new Uri("https://github.com/MegaPiggy/SALT/releases/download/1.3/SALTInstaller.exe");
+                    webClient.DownloadFileAsync(SALTuri, SAFolder + "\\SALTInstaller.exe");
+                    webClient.DownloadFileCompleted += DownloadSALTComplete;
 
-                originalSpecifyText = specifySALTLabel.Text;
+                    originalSpecifyText = specifySALTLabel.Text;
 
-                haveSALTButton.Visible = false;
+                    haveSALTButton.Visible = false;
 
-                cancelButton.Location = notSALTButton.Location;
-                cancelButton.Size = notSALTButton.Size;
+                    cancelButton.Location = notSALTButton.Location;
+                    cancelButton.Size = notSALTButton.Size;
 
-                notSALTButton.Enabled = false;
-                notSALTButton.Visible = false;
+                    notSALTButton.Enabled = false;
+                    notSALTButton.Visible = false;
 
 
 
-                cancelButton.Text = "Cancel";
-                cancelButton.Click += cancelButton_Click;
-                cancelButton.Enabled = true;
-                cancelButton.Visible = true;
-                this.Controls.Add(cancelButton);
-                specifySALTLabel.Text = "Please wait while SALT is being downloaded and installed";
+                    cancelButton.Text = "Cancel";
+                    cancelButton.Click += cancelButton_Click;
+                    cancelButton.Enabled = true;
+                    cancelButton.Visible = true;
+                    this.Controls.Add(cancelButton);
+                    specifySALTLabel.Text = "Please wait while SALT is being downloaded and installed";
+                }
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show("SALT is already installed! Do you want to uninstall it?", null, MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        var ps = new ProcessStartInfo(SAFolder + "\\SALTInstaller.exe")
+                        {
+                            UseShellExecute = true,
+                            Verb = "open",
+                            WorkingDirectory = SAFolder
+                        };
+                        Process.Start(ps);
+                        this.Close();
+                    }
+                    else
+                    {
+                        HaveSALTForm haveSALTForm = new HaveSALTForm();
+                        haveSALTForm.StartPosition = FormStartPosition.Manual;
+                        haveSALTForm.Location = this.Location;
+                        haveSALTForm.Show();
+                        this.Hide();
+                    }
+                }
+                
             }
             else
             {
@@ -125,6 +152,14 @@ namespace SAMI
         private void cancelButton_Click(object sender, EventArgs e)
         {
             webClient.CancelAsync();
+        }
+
+        private void IntroductionForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            foreach (Form open in Application.OpenForms)
+            {
+                open.Close();
+            }
         }
     }
 }

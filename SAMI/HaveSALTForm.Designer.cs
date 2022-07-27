@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HaveSALTForm));
             this.nameOfModsLabel = new System.Windows.Forms.Label();
             this.modsDataGridView = new System.Windows.Forms.DataGridView();
             this.installModButton = new System.Windows.Forms.Button();
@@ -86,12 +87,12 @@
             this.modsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.modsDataGridView.ShowEditingIcon = false;
             this.modsDataGridView.ShowRowErrors = false;
-            this.modsDataGridView.Size = new System.Drawing.Size(585, 350);
+            this.modsDataGridView.Size = new System.Drawing.Size(585, 355);
             this.modsDataGridView.TabIndex = 1;
             // 
             // installModButton
             // 
-            this.installModButton.Location = new System.Drawing.Point(12, 393);
+            this.installModButton.Location = new System.Drawing.Point(12, 398);
             this.installModButton.Name = "installModButton";
             this.installModButton.Size = new System.Drawing.Size(191, 29);
             this.installModButton.TabIndex = 2;
@@ -101,7 +102,7 @@
             // 
             // footerLabel
             // 
-            this.footerLabel.Location = new System.Drawing.Point(12, 434);
+            this.footerLabel.Location = new System.Drawing.Point(12, 430);
             this.footerLabel.Name = "footerLabel";
             this.footerLabel.Size = new System.Drawing.Size(585, 27);
             this.footerLabel.TabIndex = 3;
@@ -110,7 +111,7 @@
             // modsWebsiteLinkLabel
             // 
             this.modsWebsiteLinkLabel.AutoSize = true;
-            this.modsWebsiteLinkLabel.Location = new System.Drawing.Point(160, 461);
+            this.modsWebsiteLinkLabel.Location = new System.Drawing.Point(160, 457);
             this.modsWebsiteLinkLabel.Name = "modsWebsiteLinkLabel";
             this.modsWebsiteLinkLabel.Size = new System.Drawing.Size(234, 20);
             this.modsWebsiteLinkLabel.TabIndex = 4;
@@ -120,7 +121,7 @@
             // 
             // launchGameButton
             // 
-            this.launchGameButton.Location = new System.Drawing.Point(476, 393);
+            this.launchGameButton.Location = new System.Drawing.Point(476, 398);
             this.launchGameButton.Name = "launchGameButton";
             this.launchGameButton.Size = new System.Drawing.Size(121, 29);
             this.launchGameButton.TabIndex = 5;
@@ -132,15 +133,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 502);
+            this.ClientSize = new System.Drawing.Size(609, 486);
             this.Controls.Add(this.launchGameButton);
             this.Controls.Add(this.modsWebsiteLinkLabel);
             this.Controls.Add(this.footerLabel);
             this.Controls.Add(this.installModButton);
             this.Controls.Add(this.modsDataGridView);
             this.Controls.Add(this.nameOfModsLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HaveSALTForm";
             this.Text = "Smol Ame Mod Installer";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HaveSALTForm_FormClosed);
             this.Load += new System.EventHandler(this.HaveSALTForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.modsDataGridView)).EndInit();
             this.ResumeLayout(false);

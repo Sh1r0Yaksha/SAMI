@@ -42,10 +42,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::SAMI.Properties.Resources.AmeGP1;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(242, 478);
+            this.pictureBox1.Size = new System.Drawing.Size(242, 458);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -70,7 +70,7 @@
             // 
             // haveSALTButton
             // 
-            this.haveSALTButton.Location = new System.Drawing.Point(275, 461);
+            this.haveSALTButton.Location = new System.Drawing.Point(275, 441);
             this.haveSALTButton.Name = "haveSALTButton";
             this.haveSALTButton.Size = new System.Drawing.Size(147, 29);
             this.haveSALTButton.TabIndex = 3;
@@ -80,7 +80,7 @@
             // 
             // notSALTButton
             // 
-            this.notSALTButton.Location = new System.Drawing.Point(446, 461);
+            this.notSALTButton.Location = new System.Drawing.Point(446, 441);
             this.notSALTButton.Name = "notSALTButton";
             this.notSALTButton.Size = new System.Drawing.Size(147, 29);
             this.notSALTButton.TabIndex = 4;
@@ -91,7 +91,7 @@
             // browseTextBox
             // 
             this.browseTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.browseTextBox.Location = new System.Drawing.Point(275, 414);
+            this.browseTextBox.Location = new System.Drawing.Point(275, 408);
             this.browseTextBox.Name = "browseTextBox";
             this.browseTextBox.ReadOnly = true;
             this.browseTextBox.Size = new System.Drawing.Size(218, 27);
@@ -100,7 +100,7 @@
             // 
             // browseButton
             // 
-            this.browseButton.Location = new System.Drawing.Point(499, 412);
+            this.browseButton.Location = new System.Drawing.Point(499, 406);
             this.browseButton.Name = "browseButton";
             this.browseButton.Size = new System.Drawing.Size(94, 29);
             this.browseButton.TabIndex = 7;
@@ -112,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 502);
+            this.ClientSize = new System.Drawing.Size(609, 486);
             this.Controls.Add(this.browseButton);
             this.Controls.Add(this.browseTextBox);
             this.Controls.Add(this.notSALTButton);
@@ -120,8 +120,10 @@
             this.Controls.Add(this.specifySALTLabel);
             this.Controls.Add(this.introductionLabel);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "IntroductionForm";
             this.Text = "Smol Ame Mod Installer";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.IntroductionForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
